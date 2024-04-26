@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traffic Light</title>
+
+    <style>
+        .traffic-light {
+            width: 100px;
+            height: 320px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            margin: 50px auto;
+        }
+
+        .light {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: #030303;
+            transition: background-color cubic-bezier(0.075, 0.82, 0.165, 1);
+        }
+
+        .red {
+            background-color: red;
+        }
+
+        .yellow {
+            background-color: orange;
+        }
+
+        .green {
+            background-color: green;
+        }
+
+        .active {
+            background-color: #000000;
+            box-shadow: 0 0 2px #000000;
+        }
+
+        .traffic-light {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-items: center;
+            background-color: rgb(58, 56, 56);
+            padding: 20px;
+            border-radius: 30%;
+        }
+       
+       h1 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+       }
+    </style>
+
+</head>
+<body>
+    <h1>Traffic Light</h1>
+    <div class="traffic-light-container">
+    <div class="traffic-light">
+      <div class="light red" id="red-light"></div>
+      <div class="light yellow" id="yellow-light"></div>
+      <div class="light green" id="green-light"></div>
+    </div>
+  </div>
+
+    <script>
+        let lights = document.querySelectorAll(".light"),
+            lightIndex = 0;
+
+        setInterval(() => {
+            changeLight();
+        }, 3000);
+
+        function changeLight() {
+      
+            lights.forEach(light => {
+                light.classList.remove("active");
+            });
+            lights[lightIndex].classList.add("active");
+            lightIndex = (lightIndex + 1) % lights.length;
+        }
+    </script>
+</body>
+</html>
